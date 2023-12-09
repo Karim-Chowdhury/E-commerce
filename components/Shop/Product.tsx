@@ -1,22 +1,22 @@
 import { baseUrl } from "@/config/appConfig";
 import { AiFillStar } from "react-icons/ai";
 import { BsListUl } from "react-icons/bs";
-import { FaLongArrowAltRight } from "react-icons/fa";
+import { FaLongArrowAltRight ,FaRegHeart} from "react-icons/fa";
 import { LuGripHorizontal } from "react-icons/lu";
 const Product = () => {
   return (
     <>
       <section className="pt-5">
         <div className="container">
-          <div className="row grid grid-cols-4 space-x-5 items-start">
+          <div className="row grid grid-cols-5 space-x-5 items-start">
             {/* Col 1 */}
-            <div className="col-span-1 shadow-md py-5 px-3 space-y-5 divide-y border border-separate">
+            <div className="col-span-1 shadow-md py-5 px-3 space-y-5 divide-y border border-separate bg-green-200 dark:text-black">
               {/* Category Part */}
               <div className="space-y-3">
                 <h2 className="text-primary font-medium text-xl uppercase">
                   Category
                 </h2>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center ">
                   <div>
                     <form className="space-x-2">
                       <input
@@ -282,11 +282,11 @@ const Product = () => {
               </div>
             </div>
             {/* Col 2 */}
-            <div className="col-span-3 space-y-5">
+            <div className="col-span-4 space-y-5">
               {/* Row 1 */}
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center dark:text-black">
                 <div>
-                  <select className="w-44 border border-separatorColor px-4 py-3 focus:ring-0 focus:border-accentOne">
+                  <select className="w-44 border border-separatorColor px-4 py-3 focus:ring-0 focus:border-accentOne bg-green-200">
                     <option value="">Default Sorting</option>
                     <option value="">Price low - high</option>
                     <option value="">Price high - low</option>
@@ -297,15 +297,13 @@ const Product = () => {
                     <i className="fa-solid fa-grip" />
                     <LuGripHorizontal />
                   </div>
-                  <div className="rounded-sm py-1 px-3 border border-separate cursor-pointer">
-                    <BsListUl />
-                  </div>
+                 
                 </div>
               </div>
               {/* Row 2 */}
-              <div className="grid grid-cols-3 gap-5">
+              <div className="grid grid-cols-4 gap-5 ">
                 {/* Col 1 */}
-                <div className="col border border-separate group">
+                <div className="col border border-separate group bg-green-200 ">
                   {/* product image */}
                   <div className="relative overflow-hidden cursor-pointer">
                     <img
@@ -314,19 +312,12 @@ const Product = () => {
                       className="w-full"
                     />
                     <div className="absolute inset-0 flex items-center justify-center space-x-1 bg-black/20 opacity-0 group-hover:opacity-100 transition">
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-solid fa-magnifying-glass" />
-                      </a>
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-regular fa-heart" />
-                      </a>
+                    <span className="w-10 h-10 rounded-full bg-accentOne p-2 flex items-center justify-center hover:bg-primary">
+                            <FaRegHeart />
+                        </span>
+                        
                     </div>
+                  
                   </div>
                   {/* Product description */}
                   <div>
@@ -366,7 +357,7 @@ const Product = () => {
                   </div>
                 </div>
                 {/* Col 2 */}
-                <div className="col border border-separate group">
+                <div className="col border border-separate group bg-green-200">
                   {/* product image */}
                   <div className="relative overflow-hidden cursor-pointer">
                     <img
@@ -427,7 +418,7 @@ const Product = () => {
                   </div>
                 </div>
                 {/* Col 3 */}
-                <div className="col border border-separate group">
+                <div className="col border border-separate group bg-green-200">
                   {/* product image */}
                   <div className="relative overflow-hidden cursor-pointer">
                     <img
@@ -488,13 +479,13 @@ const Product = () => {
                   </div>
                 </div>
                 {/* Col 4 */}
-                <div className="col border border-separate group">
+                <div className="col border border-separate group bg-green-200">
                   {/* product image */}
                   <div className="relative overflow-hidden cursor-pointer">
                     <img
                       src={`${baseUrl}/img/collection/shoes-lofa.jpg`}
                       alt=""
-                      className="w-full"
+                      className="w-full "  
                     />
                     <div className="absolute inset-0 flex items-center justify-center space-x-1 bg-black/20 opacity-0 group-hover:opacity-100 transition">
                       <a
@@ -549,7 +540,7 @@ const Product = () => {
                   </div>
                 </div>
                 {/* Col 5 */}
-                <div className="col border border-separate group">
+                <div className="col border border-separate group bg-green-200">
                   {/* product image */}
                   <div className="relative overflow-hidden cursor-pointer">
                     <img
@@ -610,7 +601,7 @@ const Product = () => {
                   </div>
                 </div>
                 {/* Col 6 */}
-                <div className="col border border-separate group">
+                <div className="col border border-separate group bg-green-200">
                   {/* product image */}
                   <div className="relative overflow-hidden cursor-pointer">
                     <img
@@ -671,7 +662,7 @@ const Product = () => {
                   </div>
                 </div>
                 {/* Col 7 */}
-                <div className="col border border-separate group">
+                <div className="col border border-separate group bg-green-200">
                   {/* product image */}
                   <div className="relative overflow-hidden cursor-pointer">
                     <img
@@ -732,7 +723,7 @@ const Product = () => {
                   </div>
                 </div>
                 {/* Col 8 */}
-                <div className="col border border-separate group">
+                <div className="col border border-separate group bg-green-200">
                   {/* product image */}
                   <div className="relative overflow-hidden cursor-pointer">
                     <img
@@ -793,7 +784,7 @@ const Product = () => {
                   </div>
                 </div>
                 {/* Col 9 */}
-                <div className="col border border-separate group">
+                <div className="col border border-separate group bg-green-200">
                   {/* product image */}
                   <div className="relative overflow-hidden cursor-pointer">
                     <img
