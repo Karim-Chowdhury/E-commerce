@@ -269,6 +269,13 @@ const router = useRouter();
             {/* Col 2 */}
             <div className="flex justify-between flex-grow flex-col items-end ">
               <div className="space-x-5 flex  ">
+              <span className={
+                    router.pathname == "/"
+                      ? "bg-accentOne p-3"
+                      : "hover:bg-accentOne p-3"
+                  }>
+                  <Link href={`${baseUrl}/`}>Home</Link>
+                </span>
                 <span className={
                     router.pathname == "/shop"
                       ? "bg-accentOne p-3 "
@@ -276,20 +283,21 @@ const router = useRouter();
                   }>
                   <Link href={`${baseUrl}/shop`}>Shop</Link>
                 </span>
+                
                 <span className={
-                    router.pathname == "/"
-                      ? "bg-accentOne p-3"
-                      : "hover:bg-accentOne p-3"
-                  }>
-                  <Link href={`${baseUrl}/`}>Home</Link>
-                </span>
-                {/* <span className={
                     router.pathname == "/about"
                       ? "bg-accentOne p-3"
                       : "hover:bg-accentOne p-3"
                   }>
                   <Link href={`${baseUrl}/about`}>About Us</Link>
-                </span> */}
+                </span>
+                <span className={
+                    router.pathname == "/service"
+                      ? "bg-accentOne p-3"
+                      : "hover:bg-accentOne p-3"
+                  }>
+                  <Link href={`${baseUrl}/service`}>Service</Link>
+                </span>
                
 
                 
