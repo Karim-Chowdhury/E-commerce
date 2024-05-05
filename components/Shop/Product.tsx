@@ -3,7 +3,28 @@ import { AiFillStar } from "react-icons/ai";
 import { BsListUl } from "react-icons/bs";
 import { FaLongArrowAltRight ,FaRegHeart} from "react-icons/fa";
 import { LuGripHorizontal } from "react-icons/lu";
-const Product = () => {
+import { useDispatch } from "react-redux";
+import { setAddCart } from "@/lib/reduxStore/slices/storeSlice";
+import Link from "next/link";
+
+type CartProps = {
+  product?: any;
+};
+
+
+
+
+const ProductCard = (props: CartProps) => {
+
+  const { product } = props;
+
+  console.log('product', product)
+
+  const dispatch = useDispatch();
+
+  const addCart = (data: any) => {
+      dispatch(setAddCart({ ...data, quantity: 1 }));
+  }
   return (
     <>
       <section className="pt-5">
@@ -301,41 +322,22 @@ const Product = () => {
                 </div>
               </div>
               {/* Row 2 */}
-              <div className="grid grid-cols-4 gap-5 ">
-                {/* Col 1 */}
-                <div className="col border border-separate group bg-green-200 ">
-                  {/* product image */}
-                  <div className="relative overflow-hidden cursor-pointer">
-                    <img
-                      src={`${baseUrl}/img/collection/jacket-2.jpg`}
-                      alt=""
-                      className="w-full"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center space-x-1 bg-black/20 opacity-0 group-hover:opacity-100 transition">
-                    <span className="w-10 h-10 rounded-full bg-accentOne p-2 flex items-center justify-center hover:bg-primary">
-                            <FaRegHeart />
-                        </span>
-                        
-                    </div>
-                  
-                  </div>
-                  {/* Product description */}
-                  <div>
-                    <h3 className="pl-3 pt-3 text-primary font-bold text-lg">
-                      Jacket
-                    </h3>
-                    {/* Product Price */}
-                    <div className="flex items-center space-x-3 pl-3">
-                      <h4 className="text-paragraph font-medium text-lg">
-                        $45.00
-                      </h4>
-                      <h4 className="line-through text-paragraph font-normal text-sm">
-                        $55.00
-                      </h4>
-                    </div>
-                    {/* Product Rating*/}
-                    <div className="flex items-center space-x-3 pl-3 pb-3">
-                      <span className="flex text-accentOne">
+  <div className="grid grid-cols-4 gap-4">
+                <div className="w-full max-w-sm rounded-lg shadow item-center ">
+                              <img
+                                src={`${baseUrl}/img/collection/jacket-2.jpg`}
+                                alt=""
+                                className=" h-60 w-full "
+                              />
+                  <div className="px-5 pb-5 bg-green-200">
+                    <Link href={`${baseUrl}/#`}>
+                      <h5 className="text-2xl font-bold tracking-tight text-primary font-bold pt-3">
+                        Jacket 
+                      </h5>
+                    </Link>
+                    <div className="flex items-center mt-2.5 mb-5">
+                    <div className="flex items-center space-x-3  ">
+                      <span className="flex text-accentOne text-xl">
                         <AiFillStar />
                         <AiFillStar />
                         <AiFillStar />
@@ -343,60 +345,46 @@ const Product = () => {
                         <AiFillStar />
                       </span>
                       <div>
-                        <p className="text-paragraph">(150)</p>
+                        <p className="text-paragraph text-xl">(5.0)</p>
                       </div>
                     </div>
-                    <div className="text-center">
-                      <a
-                        href="#"
-                        className="text-primary border border-accentOne w-full block py-1 font-medium hover:bg-gradient-to-r from-accentOne to-accentTwo hover:text-white transition duration-150"
-                      >
-                        Add to Cart
-                      </a>
+                      
                     </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-3xl font-bold text-primary ">
+                        $59
+                      </span>
+                        <span className="w-8 h-8 rounded-full bg-primary text-white p-2 flex items-center justify-center       hover:bg-accentOne">
+                            <FaRegHeart />
+                        </span>
+                    </div>
+                        <div className="w-full pl-3 pr-3 pt-4">
+                          <button
+                            onClick={() => addCart(product)}
+                            className="w-full  h-12 rounded-lg text-primary border-2 border-primary block font-medium hover:bg-accentOne hover:text-white ">
+                                  Add to Cart
+                          </button>
+                        </div>
                   </div>
                 </div>
-                {/* Col 2 */}
-                <div className="col border border-separate group bg-green-200">
-                  {/* product image */}
-                  <div className="relative overflow-hidden cursor-pointer">
+
+
+
+                <div className="w-full max-w-sm rounded-lg shadow item-center ">
                     <img
                       src={`${baseUrl}/img/collection/pant-3.jpg`}
                       alt=""
-                      className="w-full"
+                      className="h-60 w-full"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center space-x-1 bg-black/20 opacity-0 group-hover:opacity-100 transition">
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-solid fa-magnifying-glass" />
-                      </a>
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-regular fa-heart" />
-                      </a>
-                    </div>
-                  </div>
-                  {/* Product description */}
-                  <div>
-                    <h3 className="pl-3 pt-3 text-primary font-bold text-lg">
-                      Pant
-                    </h3>
-                    {/* Product Price */}
-                    <div className="flex items-center space-x-3 pl-3">
-                      <h4 className="text-paragraph font-medium text-lg">
-                        $40.00
-                      </h4>
-                      <h4 className="line-through text-paragraph font-normal text-sm">
-                        $55.00
-                      </h4>
-                    </div>
-                    {/* Product Rating*/}
-                    <div className="flex items-center space-x-3 pl-3 pb-3">
-                      <span className="flex text-accentOne">
+                  <div className="px-5 pb-5 bg-green-200">
+                    <Link href={`${baseUrl}/#`}>
+                      <h5 className="text-2xl font-bold tracking-tight text-primary font-bold pt-3">
+                        Pant
+                      </h5>
+                    </Link>
+                    <div className="flex items-center mt-2.5 mb-5">
+                    <div className="flex items-center space-x-3  ">
+                      <span className="flex text-accentOne text-xl">
                         <AiFillStar />
                         <AiFillStar />
                         <AiFillStar />
@@ -404,60 +392,47 @@ const Product = () => {
                         <AiFillStar />
                       </span>
                       <div>
-                        <p className="text-paragraph">(150)</p>
+                        <p className="text-paragraph text-xl">(5.0)</p>
                       </div>
                     </div>
-                    <div className="text-center">
-                      <a
-                        href="#"
-                        className="text-primary border border-accentOne w-full block py-1 font-medium hover:bg-gradient-to-r from-accentOne to-accentTwo hover:text-white transition duration-150"
-                      >
-                        Add to Cart
-                      </a>
+                      
                     </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-3xl font-bold text-primary ">
+                        $49
+                      </span>
+                        <span className="w-8 h-8 rounded-full bg-primary text-white p-2 flex items-center justify-center       hover:bg-accentOne">
+                            <FaRegHeart />
+                        </span>
+                    </div>
+                        <div className="w-full pl-3 pr-3 pt-4">
+                          <button
+                            onClick={() => addCart(product)}
+                            className="w-full  h-12 rounded-lg text-primary border-2 border-primary block font-medium hover:bg-accentOne hover:text-white ">
+                                  Add to Cart
+                          </button>
+                        </div>
                   </div>
                 </div>
-                {/* Col 3 */}
-                <div className="col border border-separate group bg-green-200">
-                  {/* product image */}
-                  <div className="relative overflow-hidden cursor-pointer">
+
+
+
+
+                <div className="w-full max-w-sm rounded-lg shadow item-center ">
                     <img
                       src={`${baseUrl}/img/collection/tshirt-3.jpg`}
                       alt=""
-                      className="w-full"
+                      className="h-60 w-full"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center space-x-1 bg-black/20 opacity-0 group-hover:opacity-100 transition">
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-solid fa-magnifying-glass" />
-                      </a>
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-regular fa-heart" />
-                      </a>
-                    </div>
-                  </div>
-                  {/* Product description */}
-                  <div>
-                    <h3 className="pl-3 pt-3 text-primary font-bold text-lg">
-                     T-Shirt
-                    </h3>
-                    {/* Product Price */}
-                    <div className="flex items-center space-x-3 pl-3">
-                      <h4 className="text-paragraph font-medium text-lg">
-                        $35.00
-                      </h4>
-                      <h4 className="line-through text-paragraph font-normal text-sm">
-                        $50.00
-                      </h4>
-                    </div>
-                    {/* Product Rating*/}
-                    <div className="flex items-center space-x-3 pl-3 pb-3">
-                      <span className="flex text-accentOne">
+                  <div className="px-5 pb-5 bg-green-200">
+                    <Link href={`${baseUrl}/#`}>
+                      <h5 className="text-2xl font-bold tracking-tight text-primary font-bold pt-3">
+                        T-Shirt
+                      </h5>
+                    </Link>
+                    <div className="flex items-center mt-2.5 mb-5">
+                    <div className="flex items-center space-x-3  ">
+                      <span className="flex text-accentOne text-xl">
                         <AiFillStar />
                         <AiFillStar />
                         <AiFillStar />
@@ -465,60 +440,44 @@ const Product = () => {
                         <AiFillStar />
                       </span>
                       <div>
-                        <p className="text-paragraph">(150)</p>
+                        <p className="text-paragraph text-xl">(5.0)</p>
                       </div>
                     </div>
-                    <div className="text-center">
-                      <a
-                        href="#"
-                        className="text-primary border border-accentOne w-full block py-1 font-medium hover:bg-gradient-to-r from-accentOne to-accentTwo hover:text-white transition duration-150"
-                      >
-                        Add to Cart
-                      </a>
+                      
                     </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-3xl font-bold text-primary ">
+                        $25
+                      </span>
+                        <span className="w-8 h-8 rounded-full bg-primary text-white p-2 flex items-center justify-center       hover:bg-accentOne">
+                            <FaRegHeart />
+                        </span>
+                    </div>
+                        <div className="w-full pl-3 pr-3 pt-4">
+                          <button
+                            onClick={() => addCart(product)}
+                            className="w-full  h-12 rounded-lg text-primary border-2 border-primary block font-medium hover:bg-accentOne hover:text-white ">
+                                  Add to Cart
+                          </button>
+                        </div>
                   </div>
                 </div>
-                {/* Col 4 */}
-                <div className="col border border-separate group bg-green-200">
-                  {/* product image */}
-                  <div className="relative overflow-hidden cursor-pointer">
+
+                <div className="w-full max-w-sm rounded-sm shadow item-center ">
                     <img
                       src={`${baseUrl}/img/collection/shoes-lofa.jpg`}
                       alt=""
-                      className="w-full "  
+                      className="h-60 w-full"  
                     />
-                    <div className="absolute inset-0 flex items-center justify-center space-x-1 bg-black/20 opacity-0 group-hover:opacity-100 transition">
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-solid fa-magnifying-glass" />
-                      </a>
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-regular fa-heart" />
-                      </a>
-                    </div>
-                  </div>
-                  {/* Product description */}
-                  <div>
-                    <h3 className="pl-3 pt-3 text-primary font-bold text-lg">
-                      Shoes
-                    </h3>
-                    {/* Product Price */}
-                    <div className="flex items-center space-x-3 pl-3">
-                      <h4 className="text-paragraph font-medium text-lg">
-                        $45.00
-                      </h4>
-                      <h4 className="line-through text-paragraph font-normal text-sm">
-                        $55.00
-                      </h4>
-                    </div>
-                    {/* Product Rating*/}
-                    <div className="flex items-center space-x-3 pl-3 pb-3">
-                      <span className="flex text-accentOne">
+                  <div className="px-5 pb-5 bg-green-200">
+                    <Link href={`${baseUrl}/#`}>
+                      <h5 className="text-2xl font-bold tracking-tight text-primary font-bold pt-3">
+                        Shoes
+                      </h5>
+                    </Link>
+                    <div className="flex items-center mt-2.5 mb-5">
+                    <div className="flex items-center space-x-3  ">
+                      <span className="flex text-accentOne text-xl">
                         <AiFillStar />
                         <AiFillStar />
                         <AiFillStar />
@@ -526,60 +485,45 @@ const Product = () => {
                         <AiFillStar />
                       </span>
                       <div>
-                        <p className="text-paragraph">(150)</p>
+                        <p className="text-paragraph text-xl">(5.0)</p>
                       </div>
                     </div>
-                    <div className="text-center">
-                      <a
-                        href="#"
-                        className="text-primary border border-accentOne w-full block py-1 font-medium hover:bg-gradient-to-r from-accentOne to-accentTwo hover:text-white transition duration-150"
-                      >
-                        Add to Cart
-                      </a>
+                      
                     </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-3xl font-bold text-primary ">
+                        $35
+                      </span>
+                        <span className="w-8 h-8 rounded-full bg-primary text-white p-2 flex items-center justify-center       hover:bg-accentOne">
+                            <FaRegHeart />
+                        </span>
+                    </div>
+                        <div className="w-full pl-3 pr-3 pt-4">
+                          <button
+                            onClick={() => addCart(product)}
+                            className="w-full  h-12 rounded-lg text-primary border-2 border-primary block font-medium hover:bg-accentOne hover:text-white ">
+                                  Add to Cart
+                          </button>
+                        </div>
                   </div>
                 </div>
-                {/* Col 5 */}
-                <div className="col border border-separate group bg-green-200">
-                  {/* product image */}
-                  <div className="relative overflow-hidden cursor-pointer">
+              
+               
+                <div className="w-full max-w-sm rounded-sm shadow item-center ">
                     <img
                       src={`${baseUrl}/img/collection/sunglass-2.jpg`}
                       alt=""
-                      className="w-full"
+                      className="h-60 w-full"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center space-x-1 bg-black/20 opacity-0 group-hover:opacity-100 transition">
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-solid fa-magnifying-glass" />
-                      </a>
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-regular fa-heart" />
-                      </a>
-                    </div>
-                  </div>
-                  {/* Product description */}
-                  <div>
-                    <h3 className="pl-3 pt-3 text-primary font-bold text-lg">
+                  <div className="px-5 pb-5 bg-green-200">
+                    <Link href={`${baseUrl}/#`}>
+                      <h5 className="text-2xl font-bold tracking-tight text-primary font-bold pt-3">
                       Sunglasses
-                    </h3>
-                    {/* Product Price */}
-                    <div className="flex items-center space-x-3 pl-3">
-                      <h4 className="text-paragraph font-medium text-lg">
-                        $35.00
-                      </h4>
-                      <h4 className="line-through text-paragraph font-normal text-sm">
-                        $45.00
-                      </h4>
-                    </div>
-                    {/* Product Rating*/}
-                    <div className="flex items-center space-x-3 pl-3 pb-3">
-                      <span className="flex text-accentOne">
+                      </h5>
+                    </Link>
+                    <div className="flex items-center mt-2.5 mb-5">
+                    <div className="flex items-center space-x-3  ">
+                      <span className="flex text-accentOne text-xl">
                         <AiFillStar />
                         <AiFillStar />
                         <AiFillStar />
@@ -587,60 +531,44 @@ const Product = () => {
                         <AiFillStar />
                       </span>
                       <div>
-                        <p className="text-paragraph">(150)</p>
+                        <p className="text-paragraph text-xl">(5.0)</p>
                       </div>
                     </div>
-                    <div className="text-center">
-                      <a
-                        href="#"
-                        className="text-primary border border-accentOne w-full block py-1 font-medium hover:bg-gradient-to-r from-accentOne to-accentTwo hover:text-white transition duration-150"
-                      >
-                        Add to Cart
-                      </a>
+                      
                     </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-3xl font-bold text-primary ">
+                        $25
+                      </span>
+                        <span className="w-8 h-8 rounded-full bg-primary text-white p-2 flex items-center justify-center       hover:bg-accentOne">
+                            <FaRegHeart />
+                        </span>
+                    </div>
+                        <div className="w-full pl-3 pr-3 pt-4">
+                          <button
+                            onClick={() => addCart(product)}
+                            className="w-full  h-12 rounded-lg text-primary border-2 border-primary block font-medium hover:bg-accentOne hover:text-white ">
+                                  Add to Cart
+                          </button>
+                        </div>
                   </div>
                 </div>
-                {/* Col 6 */}
-                <div className="col border border-separate group bg-green-200">
-                  {/* product image */}
-                  <div className="relative overflow-hidden cursor-pointer">
+              
+                <div className="w-full max-w-sm rounded-sm shadow item-center ">
                     <img
                       src={`${baseUrl}/img/collection/watch-1.jpg`}
                       alt=""
-                      className="w-full"
+                      className="h-60 w-full"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center space-x-1 bg-black/20 opacity-0 group-hover:opacity-100 transition">
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-solid fa-magnifying-glass" />
-                      </a>
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-regular fa-heart" />
-                      </a>
-                    </div>
-                  </div>
-                  {/* Product description */}
-                  <div>
-                    <h3 className="pl-3 pt-3 text-primary font-bold text-lg">
+                  <div className="px-5 pb-5 bg-green-200">
+                    <Link href={`${baseUrl}/#`}>
+                      <h5 className="text-2xl font-bold tracking-tight text-primary font-bold pt-3">
                       Watch
-                    </h3>
-                    {/* Product Price */}
-                    <div className="flex items-center space-x-3 pl-3">
-                      <h4 className="text-paragraph font-medium text-lg">
-                        $25.00
-                      </h4>
-                      <h4 className="line-through text-paragraph font-normal text-sm">
-                        $35.00
-                      </h4>
-                    </div>
-                    {/* Product Rating*/}
-                    <div className="flex items-center space-x-3 pl-3 pb-3">
-                      <span className="flex text-accentOne">
+                      </h5>
+                    </Link>
+                    <div className="flex items-center mt-2.5 mb-5">
+                    <div className="flex items-center space-x-3  ">
+                      <span className="flex text-accentOne text-xl">
                         <AiFillStar />
                         <AiFillStar />
                         <AiFillStar />
@@ -648,60 +576,44 @@ const Product = () => {
                         <AiFillStar />
                       </span>
                       <div>
-                        <p className="text-paragraph">(150)</p>
+                        <p className="text-paragraph text-xl">(5.0)</p>
                       </div>
                     </div>
-                    <div className="text-center">
-                      <a
-                        href="#"
-                        className="text-primary border border-accentOne w-full block py-1 font-medium hover:bg-gradient-to-r from-accentOne to-accentTwo hover:text-white transition duration-150"
-                      >
-                        Add to Cart
-                      </a>
+                      
                     </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-3xl font-bold text-primary ">
+                        $40
+                      </span>
+                        <span className="w-8 h-8 rounded-full bg-primary text-white p-2 flex items-center justify-center       hover:bg-accentOne">
+                            <FaRegHeart />
+                        </span>
+                    </div>
+                        <div className="w-full pl-3 pr-3 pt-4">
+                          <button
+                            onClick={() => addCart(product)}
+                            className="w-full  h-12 rounded-lg text-primary border-2 border-primary block font-medium hover:bg-accentOne hover:text-white ">
+                                  Add to Cart
+                          </button>
+                        </div>
                   </div>
                 </div>
-                {/* Col 7 */}
-                <div className="col border border-separate group bg-green-200">
-                  {/* product image */}
-                  <div className="relative overflow-hidden cursor-pointer">
+                {/* Col 6 */}
+                <div className="w-full max-w-sm rounded-sm shadow item-center ">
                     <img
                       src={`${baseUrl}/img/collection/smart-watch.jpg`}
                       alt=""
-                      className="w-full"
+                      className="h-60 w-full"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center space-x-1 bg-black/20 opacity-0 group-hover:opacity-100 transition">
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-solid fa-magnifying-glass" />
-                      </a>
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-regular fa-heart" />
-                      </a>
-                    </div>
-                  </div>
-                  {/* Product description */}
-                  <div>
-                    <h3 className="pl-3 pt-3 text-primary font-bold text-lg">
+                  <div className="px-5 pb-5 bg-green-200">
+                    <Link href={`${baseUrl}/#`}>
+                      <h5 className="text-2xl font-bold tracking-tight text-primary font-bold pt-3">
                       Smart Watch
-                    </h3>
-                    {/* Product Price */}
-                    <div className="flex items-center space-x-3 pl-3">
-                      <h4 className="text-paragraph font-medium text-lg">
-                        $35.00
-                      </h4>
-                      <h4 className="line-through text-paragraph font-normal text-sm">
-                        $45.00
-                      </h4>
-                    </div>
-                    {/* Product Rating*/}
-                    <div className="flex items-center space-x-3 pl-3 pb-3">
-                      <span className="flex text-accentOne">
+                      </h5>
+                    </Link>
+                    <div className="flex items-center mt-2.5 mb-5">
+                    <div className="flex items-center space-x-3  ">
+                      <span className="flex text-accentOne text-xl">
                         <AiFillStar />
                         <AiFillStar />
                         <AiFillStar />
@@ -709,60 +621,44 @@ const Product = () => {
                         <AiFillStar />
                       </span>
                       <div>
-                        <p className="text-paragraph">(150)</p>
+                        <p className="text-paragraph text-xl">(5.0)</p>
                       </div>
                     </div>
-                    <div className="text-center">
-                      <a
-                        href="#"
-                        className="text-primary border border-accentOne w-full block py-1 font-medium hover:bg-gradient-to-r from-accentOne to-accentTwo hover:text-white transition duration-150"
-                      >
-                        Add to Cart
-                      </a>
+                      
                     </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-3xl font-bold text-primary ">
+                        $45
+                      </span>
+                        <span className="w-8 h-8 rounded-full bg-primary text-white p-2 flex items-center justify-center       hover:bg-accentOne">
+                            <FaRegHeart />
+                        </span>
+                    </div>
+                        <div className="w-full pl-3 pr-3 pt-4">
+                          <button
+                            onClick={() => addCart(product)}
+                            className="w-full  h-12 rounded-lg text-primary border-2 border-primary block font-medium hover:bg-accentOne hover:text-white ">
+                                  Add to Cart
+                          </button>
+                        </div>
                   </div>
                 </div>
-                {/* Col 8 */}
-                <div className="col border border-separate group bg-green-200">
-                  {/* product image */}
-                  <div className="relative overflow-hidden cursor-pointer">
+                {/* Col 7 */}
+                <div className="w-full max-w-sm rounded-sm shadow item-center ">
                     <img
                       src={`${baseUrl}/img/collection/tshirt-2.jpg`}
                       alt=""
-                      className="w-full"
+                      className="h-60 w-full"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center space-x-1 bg-black/20 opacity-0 group-hover:opacity-100 transition">
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-solid fa-magnifying-glass" />
-                      </a>
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-regular fa-heart" />
-                      </a>
-                    </div>
-                  </div>
-                  {/* Product description */}
-                  <div>
-                    <h3 className="pl-3 pt-3 text-primary font-bold text-lg">
+                  <div className="px-5 pb-5 bg-green-200">
+                    <Link href={`${baseUrl}/#`}>
+                      <h5 className="text-2xl font-bold tracking-tight text-primary font-bold pt-3">
                       T-Shirt
-                    </h3>
-                    {/* Product Price */}
-                    <div className="flex items-center space-x-3 pl-3">
-                      <h4 className="text-paragraph font-medium text-lg">
-                        $25.00
-                      </h4>
-                      <h4 className="line-through text-paragraph font-normal text-sm">
-                        $30.00
-                      </h4>
-                    </div>
-                    {/* Product Rating*/}
-                    <div className="flex items-center space-x-3 pl-3 pb-3">
-                      <span className="flex text-accentOne">
+                      </h5>
+                    </Link>
+                    <div className="flex items-center mt-2.5 mb-5">
+                    <div className="flex items-center space-x-3  ">
+                      <span className="flex text-accentOne text-xl">
                         <AiFillStar />
                         <AiFillStar />
                         <AiFillStar />
@@ -770,81 +666,31 @@ const Product = () => {
                         <AiFillStar />
                       </span>
                       <div>
-                        <p className="text-paragraph">(150)</p>
+                        <p className="text-paragraph text-xl">(5.0)</p>
                       </div>
                     </div>
-                    <div className="text-center">
-                      <a
-                        href="#"
-                        className="text-primary border border-accentOne w-full block py-1 font-medium hover:bg-gradient-to-r from-accentOne to-accentTwo hover:text-white transition duration-150"
-                      >
-                        Add to Cart
-                      </a>
+                      
                     </div>
-                  </div>
-                </div>
-                {/* Col 9 */}
-                <div className="col border border-separate group bg-green-200">
-                  {/* product image */}
-                  <div className="relative overflow-hidden cursor-pointer">
-                    <img
-                      src={`${baseUrl}/img/collection/jacket-5.jpg`}
-                      alt=""
-                      className="w-full"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center space-x-1 bg-black/20 opacity-0 group-hover:opacity-100 transition">
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-solid fa-magnifying-glass" />
-                      </a>
-                      <a
-                        href="#"
-                        className="w-8 h-8 rounded-full bg-accentOne p-2 flex items-center justify-center"
-                      >
-                        <i className="fa-regular fa-heart" />
-                      </a>
-                    </div>
-                  </div>
-                  {/* Product description */}
-                  <div>
-                    <h3 className="pl-3 pt-3 text-primary font-bold text-lg">
-                      Jacket
-                    </h3>
-                    {/* Product Price */}
-                    <div className="flex items-center space-x-3 pl-3">
-                      <h4 className="text-paragraph font-medium text-lg">
-                        $45.00
-                      </h4>
-                      <h4 className="line-through text-paragraph font-normal text-sm">
-                        $55.00
-                      </h4>
-                    </div>
-                    {/* Product Rating*/}
-                    <div className="flex items-center space-x-3 pl-3 pb-3">
-                      <span className="flex text-accentOne">
-                        <AiFillStar />
-                        <AiFillStar />
-                        <AiFillStar />
-                        <AiFillStar />
-                        <AiFillStar />
+                    <div className="flex items-center justify-between">
+                      <span className="text-3xl font-bold text-primary ">
+                        $45
                       </span>
-                      <div>
-                        <p className="text-paragraph">(150)</p>
-                      </div>
+                        <span className="w-8 h-8 rounded-full bg-primary text-white p-2 flex items-center justify-center       hover:bg-accentOne">
+                            <FaRegHeart />
+                        </span>
                     </div>
-                    <div className="text-center">
-                      <a
-                        href="#"
-                        className="text-primary border border-accentOne w-full block py-1 font-medium hover:bg-gradient-to-r from-accentOne to-accentTwo hover:text-white transition duration-150"
-                      >
-                        Add to Cart
-                      </a>
-                    </div>
+                        <div className="w-full pl-3 pr-3 pt-4">
+                          <button
+                            onClick={() => addCart(product)}
+                            className="w-full  h-12 rounded-lg text-primary border-2 border-primary block font-medium hover:bg-accentOne hover:text-white ">
+                                  Add to Cart
+                          </button>
+                        </div>
                   </div>
                 </div>
-              </div>
+                {/* Col 8 */}
+                
+  </div>
               {/* Row 3 */}
               <div className="flex items-center space-x-3 w-20 mx-auto">
                 <div className="h-5 w-5 rounded-sm border border-separatorColor flex items-center justify-center px-4 py-4 bg-accentOne text-white cursor-pointer">
@@ -871,4 +717,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductCard;

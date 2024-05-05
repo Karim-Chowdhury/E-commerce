@@ -291,15 +291,7 @@ const router = useRouter();
                   }>
                   <Link href={`${baseUrl}/about`}>About Us</Link>
                 </span>
-                <span className={
-                    router.pathname == "/service"
-                      ? "bg-accentOne p-3"
-                      : "hover:bg-accentOne p-3"
-                  }>
-                  <Link href={`${baseUrl}/service`}>Service</Link>
-                </span>
-               
-
+                
                 
               </div>
               {/* <div className="flex items-center space-x-5">

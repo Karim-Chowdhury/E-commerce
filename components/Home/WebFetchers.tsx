@@ -3,15 +3,15 @@ import { baseUrl } from '@/config/appConfig';
 
 const WebFetchers = () => {
     return (
-        <div className="container">
+        <div className="container row grid">
             <div>
                 <h2 className=" text-center text-primary font-semibold text-3xl uppercase pb-10">
                 Unleash your street style with our new collection
                 </h2>
             </div>
-            <div className="row max-w-5xl mx-auto grid grid-cols-3 gap-6">
+            <div className="row max-w-5xl mx-auto grid grid-cols-3 gap-6 ">
                 {/* col 1 */}
-                <div className="col flex items-center px-10 py-5 space-x-5 border border-accentOne bg-primary">
+                <div className="col flex items-center px-10 py-5 space-x-5 border border-accentOne bg-primary ">
                     <div>
                     <img src={`${baseUrl}/img/icon/free-shipping.png`} alt="" className="w-24 " />
                     </div>
